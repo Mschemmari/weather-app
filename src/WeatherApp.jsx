@@ -1,9 +1,10 @@
 import React from 'react';
+import { getLocationCoords, getWeatherData } from 'api';
 
 export default class WeatherApp extends React.Component {
 
   constructor() {
-    super(); // A call to the class we are extending: React.Component
+    super();
     this.state = {
       city: 'Loading...',
       country: 'Loading...',
@@ -26,4 +27,27 @@ export default class WeatherApp extends React.Component {
       </div>
     );
   }
-}
+
+  fetchWeather(units) {
+  	getLocationCoords().then(
+  		(coords) => {
+  			getWeatherData(units, coords).then(
+  				(getWeatherData) => {
+  					this.setState({
+  						city: getWeatherData.body.name,
+  						country: getWeatherData.body.sys.country,
+  						currentTemperature: getWeatherData.body.main.temp,
+  						currentWeather: getWeatherData.body.weather[0].main,
+  						currentUnit: units,
+  						availableUnit: units === 'C' ? 'F' : 'C'
+  					});
+  				}, (error) => {
+  					console.error(error);
+  				}
+  			);
+  		}, (error) => {
+  			console.error(error);
+  			}
+  		);
+  	}
+  }
