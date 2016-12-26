@@ -1,0 +1,33 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700|Source+Sans+Pro:200|Work+Sans:100,200);
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+html {
+    font-family: 'Work Sans', Helvetica, Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+}
+ 
+body {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+ 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+ 
+#weather-app {
+    width: 100vw;
+    height: 100vh;
+}
+ 
+.thunderstorm {
+    background-image: url(img/thunderstorm.jpg);
+}
