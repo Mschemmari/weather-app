@@ -21510,7 +21510,18 @@
 	  function WeatherApp() {
 	    _classCallCheck(this, WeatherApp);
 
-	    return _possibleConstructorReturn(this, (WeatherApp.__proto__ || Object.getPrototypeOf(WeatherApp)).apply(this, arguments));
+	    // A call to the class we are extending: React.Component
+	    var _this = _possibleConstructorReturn(this, (WeatherApp.__proto__ || Object.getPrototypeOf(WeatherApp)).call(this));
+
+	    _this.state = {
+	      city: 'Loading...',
+	      country: 'Loading...',
+	      currentWeather: 'Loading...',
+	      currentTemperature: 0,
+	      currentUnit: 'C',
+	      availableUnit: 'F'
+	    };
+	    return _this;
 	  }
 
 	  _createClass(WeatherApp, [{
@@ -21518,11 +21529,39 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'main-wrapper overlay' },
 	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Weather app will go here!'
+	          'div',
+	          { className: 'forecast-box' },
+	          _react2.default.createElement(
+	            'h1',
+	            { className: 'city-name' },
+	            this.state.city
+	          ),
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'country' },
+	            this.state.country
+	          ),
+	          _react2.default.createElement(
+	            'h3',
+	            { className: 'temperature' },
+	            this.state.currentTemperature,
+	            ' \xB0',
+	            this.state.currentUnit,
+	            ' ',
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'super-small' },
+	              '/ ',
+	              this.state.availableUnit
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            this.state.currentWeather
+	          )
 	        )
 	      );
 	    }
